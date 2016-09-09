@@ -8,10 +8,24 @@ app.config['MYSQL_DATABASE_PASSWORD'] = '19860601'
 app.config['MYSQL_DATABASE_DB'] = 'innodb'
 app.config['MYSQL_DATABASE_HOST'] = 'aws-rds.cm1lnnlrbky4.ap-northeast-1.rds.amazonaws.com'
 mysql.init_app(app)
-
+	
 @app.route('/')
 def hello_world():
-  return 'Hello from EC2 + Ubuntu Flask + git! ver 3.0'
+	return 'Hello from EC2 + Ubuntu Flask + git! ver 3.0'
+
+@app.route('/hello')
+@app.route('/hello/<name>')
+def hello(name=None):
+    if name is None:
+        name = 'World'
+    return 'Hello %s' % name
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return 'This is a POST request'
+    else:
+        return 'This is a GET request'
 
 @app.route('/signup')
 def signup():
