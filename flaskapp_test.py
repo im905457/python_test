@@ -11,7 +11,7 @@ mysql.init_app(app)
 
 @app.route('/')
 def hello_world():
-  return 'Hello from Flask!'
+  return 'Hello from EC2 + Ubuntu Flask + git!'
 
 @app.route('/signup')
 def signup():
