@@ -38,7 +38,7 @@ def count_me(input_str):
 @app.route('/genres')
 def genres():
 	#return jsonify({'genres': genres})
-	return jsonify({'genres': genres_data})
+	return jsonify(genres_data)
 
 @app.route("/auth/<msn>")
 def auth(msn):
