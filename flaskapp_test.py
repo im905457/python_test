@@ -8,12 +8,15 @@ app.config['MYSQL_DATABASE_PASSWORD'] = '19860601'
 app.config['MYSQL_DATABASE_DB'] = 'innodb'
 app.config['MYSQL_DATABASE_HOST'] = 'aws-rds.cm1lnnlrbky4.ap-northeast-1.rds.amazonaws.com'
 mysql.init_app(app)
+
 list = [
 	{'subject1': 'Math', 'val': 2},
 	{'subject2': 'English', 'val': 10},
 	{'names': { 'first_name': 'Chengyu', 'last_name': 'Tsai'}}, 
-	{'score': 98}
+	{'score': 98},
+	{'grade': 'A'}
 ]
+
 @app.route('/')
 def hello_world():
 	return 'Hello from EC2 + Ubuntu Flask + git! ver 3.0'
@@ -21,9 +24,25 @@ def hello_world():
 @app.route('/hello')
 @app.route('/hello/<name>')
 def hello(name=None):
-    if name is None:
-        name = 'World'
-    return '<h1>Hello %s!</h1>' % name
+	if name is None:
+		name = 'Guest'
+	return render_template('hello.html', name=name)
+	
+@app.route('/signup')
+def signup():
+	return render_template('signup.html')
+
+@app.route('/reg',methods=['POST'])
+def reg():
+	# read the posted values from the UI
+	_name = request.form['inputName']
+	_email = request.form['inputEmail']
+	_password = request.form['inputPassword']
+	# validate the received values
+	if _name and _email and _password:
+		return json.dumps({'html':'<span>All fields good !!</span>'})
+	else:
+		return json.dumps({'html':'<span>Enter the required fields</span>'})
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -32,13 +51,6 @@ def login():
     else:
         return 'This is a GET request'
 
-@app.route('/signup')
-@app.route('/signup/<name>')
-def signup(name=None):
-	if name is None:
-		name = 'World'
-	return render_template('signup.html', name=name)
-
 @app.route('/countme/<input_str>')
 def count_me(input_str):
     return input_str
@@ -46,7 +58,6 @@ def count_me(input_str):
 @app.route('/genres')
 def genres():
 	return jsonify(genres_data=list)
-	#return jsonify({ 'names': { 'first_name': 'Frank', 'last_name': 'Sinatra'}, 'score': 98})
 
 @app.route("/auth/<msn>")
 def auth(msn):
