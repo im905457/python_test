@@ -32,6 +32,7 @@ def login():
     else:
         return 'This is a GET request'
 
+@app.route('/signup')
 @app.route('/signup/<name>')
 def signup(name=None):
 	if name is None:
