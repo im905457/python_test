@@ -9,10 +9,10 @@ app.config['MYSQL_DATABASE_DB'] = 'innodb'
 app.config['MYSQL_DATABASE_HOST'] = 'aws-rds.cm1lnnlrbky4.ap-northeast-1.rds.amazonaws.com'
 mysql.init_app(app)
 list = [
-	{'param': 'foo', 'val': 2},
-	{'param': 'bar', 'val': 10},
-	'names': { 'first_name': 'Frank', 'last_name': 'Sinatra'}, 
-	'score': 98
+	{'subject1': 'Math', 'val': 2},
+	{'subject2': 'English', 'val': 10},
+	{'names': { 'first_name': 'Chengyu', 'last_name': 'Tsai'}}, 
+	{'score': 98}
 ]
 @app.route('/')
 def hello_world():
