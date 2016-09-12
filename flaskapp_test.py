@@ -29,7 +29,7 @@ def hello_world():
 def hello(name=None):
 	if name is None:
 		name = 'Guest'
-		hello_world4()
+		return hello_world4()
 	else:
 		return render_template('hello.html', name=name)
 	
