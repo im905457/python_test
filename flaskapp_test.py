@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
@@ -32,9 +32,11 @@ def login():
     else:
         return 'This is a GET request'
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
+@app.route('/signup/<name>')
+def signup(name=None):
+	if name is None:
+		name = 'World'
+    return render_template('signup.html', name=name)
 
 @app.route('/countme/<input_str>')
 def count_me(input_str):
