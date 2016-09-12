@@ -43,6 +43,13 @@ def login():
     else:
         return 'This is a GET request'
 
+#Getting password
+@auth.get_password
+def get_password(username):
+    if username == 'user':
+        return 'rE_23KhAE°0@POI4%'
+    return None
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
@@ -54,7 +61,7 @@ def count_me(input_str):
 #Get genres
 @app.route('/todo/api/v1.0/genres', methods=['GET'])
 def get_genres():
-    return jsonify({'genres': genres})
+	return jsonify({'genres': genres})
 
 @app.route("/auth/<msn>")
 def auth(msn):
@@ -68,5 +75,15 @@ def auth(msn):
     else:
         return "USER NAME: %s" % data[3]
 
+#404 not found 
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error':'Not found'}), 404)
+
+#401 unauthorized access
+@auth.error_handler
+def unauthorized():
+    return make_response(jsonify({'error': 'Unauthorized access'}), 401)
+	
 if __name__ == '__main__':
   app.run()
