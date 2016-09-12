@@ -17,6 +17,9 @@ list = [
 	{'grade': 'A'}
 ]
 
+def hello_world4():
+	return 'Hello from EC2 + Ubuntu Flask + git! ver 3.0'
+
 @app.route('/')
 def hello_world():
 	return 'Hello from EC2 + Ubuntu Flask + git! ver 3.0'
@@ -25,7 +28,7 @@ def hello_world():
 @app.route('/guest/<name>')
 def guest(name=None):
 	if name is None:
-		return hello_world()
+		return hello_world4()
 	else:
 		return 'Hello from EC2 + Ubuntu Flask + git! ver 1.0'
 
