@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, url_for
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
@@ -32,17 +32,18 @@ def hello(name=None):
 def signup():
 	return render_template('signup.html')
 
-@app.route('/reg',methods=['POST'])
+@app.route('/reg', methods=['POST'])
 def reg():
 	# read the posted values from the UI
 	_name = request.form['inputName']
 	_email = request.form['inputEmail']
 	_password = request.form['inputPassword']
+	return _name
 	# validate the received values
-	if _name and _email and _password:
-		return json.dumps({'html':'<span>All fields good !!</span>'})
-	else:
-		return json.dumps({'html':'<span>Enter the required fields</span>'})
+	#if _name and _email and _password:
+		#return json.dumps({'html':'<span>All fields good !!</span>'})
+	#else:
+		#return json.dumps({'html':'<span>Enter the required fields</span>'})
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
