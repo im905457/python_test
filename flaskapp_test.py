@@ -10,7 +10,9 @@ app.config['MYSQL_DATABASE_HOST'] = 'aws-rds.cm1lnnlrbky4.ap-northeast-1.rds.ama
 mysql.init_app(app)
 list = [
 	{'param': 'foo', 'val': 2},
-	{'param': 'bar', 'val': 10}
+	{'param': 'bar', 'val': 10},
+	'names': { 'first_name': 'Frank', 'last_name': 'Sinatra'}, 
+	'score': 98
 ]
 @app.route('/')
 def hello_world():
