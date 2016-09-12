@@ -41,9 +41,9 @@ def reg():
 
 	# validate the received values
 	if _name and _email and _password:
-		return '<h1>登入成功!!</h1>'
+		return '登入成功!'
 	else:
-		return '<h1>缺少必要參數</h1>'
+		return '缺少必要參數'
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
