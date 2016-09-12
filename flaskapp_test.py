@@ -36,7 +36,7 @@ def login():
 def signup(name=None):
 	if name is None:
 		name = 'World'
-    return render_template('signup.html', name=name)
+	return render_template('signup.html', name=name)
 
 @app.route('/countme/<input_str>')
 def count_me(input_str):
