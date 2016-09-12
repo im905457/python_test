@@ -1,8 +1,24 @@
-from flask import Flask, request
+import os
+from flask import Flask, request, jsonify, abort, make_response
+from flask.ext.httpauth import HTTPBasicAuth
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
 app = Flask(__name__)
+auth = HTTPBasicAuth()
+genres = [
+    {
+        'id': 1,
+        'name': u'Trash Metal',
+        'bands': u'Metallica, Megadeth'
+    },
+    {
+        'id': 2,
+        'name': u'Death Metal',
+        'bands': u'Dark Tranquility, Inflames'
+    }
+]
+
 app.config['MYSQL_DATABASE_USER'] = 'im905457'
 app.config['MYSQL_DATABASE_PASSWORD'] = '19860601'
 app.config['MYSQL_DATABASE_DB'] = 'innodb'
@@ -34,6 +50,11 @@ def signup():
 @app.route('/countme/<input_str>')
 def count_me(input_str):
     return input_str
+
+#Get genres
+@app.route('/todo/api/v1.0/genres', methods=['GET'])
+def get_genres():
+    return jsonify({'genres': genres})
 
 @app.route("/auth/<msn>")
 def auth(msn):
