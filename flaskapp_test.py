@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, jsonify, abort, make_response
-from flask.ext.httpauth import HTTPBasicAuth
+from flaskext.httpauth import HTTPBasicAuth
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
@@ -43,13 +43,6 @@ def login():
     else:
         return 'This is a GET request'
 
-#Getting password
-@auth.get_password
-def get_password(username):
-    if username == 'user':
-        return 'rE_23KhAE°0@POI4%'
-    return None
-
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
@@ -59,8 +52,8 @@ def count_me(input_str):
     return input_str
 
 #Get genres
-@app.route('/todo/api/v1.0/genres', methods=['GET'])
-def get_genres():
+@app.route('/api/genres', methods=['GET'])
+def genres():
 	return jsonify({'genres': genres})
 
 @app.route("/auth/<msn>")
