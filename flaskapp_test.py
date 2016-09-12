@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, abort, make_response
+from flask import Flask, request, jsonify
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
@@ -63,15 +63,5 @@ def auth(msn):
     else:
         return "USER NAME: %s" % data[3]
 
-#404 not found 
-@app.errorhandler(404)
-def not_found(error):
-    return make_response(jsonify({'error':'Not found'}), 404)
-
-#401 unauthorized access
-@auth.error_handler
-def unauthorized():
-    return make_response(jsonify({'error': 'Unauthorized access'}), 401)
-	
 if __name__ == '__main__':
   app.run()
