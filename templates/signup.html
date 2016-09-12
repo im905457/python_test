@@ -15,7 +15,7 @@
       <div class="header">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="main">Home</a></li>
+            <li role="presentation" ><a href="hello">Home</a></li>
             <li role="presentation"><a href="#">Sign In</a></li>
             <li role="presentation" class="active"><a href="#">Sign Up</a></li>
           </ul>
@@ -34,7 +34,7 @@
 			<input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
 			<div class="alert alert-danger" role="alert" id="danger-alert">
 				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-				<span class="sr-only">Error:</span><div id="error_msg">Enter a valid email address</div>
+				<span class="sr-only">Error:</span><div id="error_msg"></div>
 			</div>
 			<button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
 		</form>
@@ -43,7 +43,7 @@
        
  
       <footer class="footer">
-        <p>&copy; Company 2015</p>
+        <p>&copy; Company 2016</p>
       </footer>
  
     </div>
@@ -56,7 +56,6 @@
 				data: $('form').serialize(),
 				type: 'POST',
 				success: function(response) {
-					//console.log(response);
 					$("#error_msg").html(response);
 					$("#danger-alert").show('fast');
 				},

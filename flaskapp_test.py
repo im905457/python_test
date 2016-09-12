@@ -38,12 +38,22 @@ def reg():
 	_name = request.form['inputName']
 	_email = request.form['inputEmail']
 	_password = request.form['inputPassword']
-
-	# validate the received values
-	if _name and _email and _password:
-		return '登入成功!'
+	
+	cursor = mysql.connect().cursor()
+    cursor.execute("SELECT * from MEMBER_DATA where MEMBER_ID = '" + _name + "' ")
+    data = cursor.fetchone()
+    if data is not None:
+        return '登入成功!'
+    elif _name and _email and _password:
+		return '帳號不存在!'
 	else:
-		return '缺少必要參數'
+        return '缺少必要參數'
+		
+	# validate the received values
+	#if _name and _email and _password:
+	#	return '登入成功!'
+	#else:
+	#	return '缺少必要參數'
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
