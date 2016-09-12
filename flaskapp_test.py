@@ -49,7 +49,7 @@ def count_me(input_str):
 #Get genres
 @app.route('/genres', methods=['GET'])
 def genres():
-	return jsonify({'genres': genres})
+	return genres
 
 @app.route("/auth/<msn>")
 def auth(msn):
