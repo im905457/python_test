@@ -17,8 +17,8 @@ list = [
 	{'grade': 'A'}
 ]
 
-def hello_world4():
-	return 'Hello from EC2 + Ubuntu Flask + git! ver 3.0'
+def dir_func():
+	return 'guestname is empty, you are directing to dir_func...'
 
 @app.route('/')
 def hello_world():
@@ -28,9 +28,9 @@ def hello_world():
 @app.route('/guest/<name>')
 def guest(name=None):
 	if name is None:
-		return hello_world4()
+		return dir_func()
 	else:
-		return 'Hello from EC2 + Ubuntu Flask + git! ver 1.0'
+		return 'Welcome, guest %s' % name
 
 @app.route('/hello')
 @app.route('/hello/<name>')
