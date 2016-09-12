@@ -18,7 +18,7 @@ def hello_world():
 def hello(name=None):
     if name is None:
         name = 'World'
-    return 'Hello %s' % name
+    return '<h1>Hello %s!</h1>' % name
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
