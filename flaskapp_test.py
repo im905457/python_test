@@ -47,7 +47,7 @@ def count_me(input_str):
     return input_str
 
 #Get genres
-@app.route('/api/genres', methods=['GET'])
+@app.route('/genres', methods=['GET'])
 def genres():
 	return jsonify({'genres': genres})
 
