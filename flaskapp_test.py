@@ -38,12 +38,12 @@ def reg():
 	_name = request.form['inputName']
 	_email = request.form['inputEmail']
 	_password = request.form['inputPassword']
-	return _name
+
 	# validate the received values
-	#if _name and _email and _password:
-		#return json.dumps({'html':'<span>All fields good !!</span>'})
-	#else:
-		#return json.dumps({'html':'<span>Enter the required fields</span>'})
+	if _name and _email and _password:
+		return '<h1>登入成功!!</h1>'
+	else:
+		return '<h1>缺少必要參數</h1>'
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
