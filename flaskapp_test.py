@@ -8,7 +8,7 @@ app.config['MYSQL_DATABASE_PASSWORD'] = '19860601'
 app.config['MYSQL_DATABASE_DB'] = 'innodb'
 app.config['MYSQL_DATABASE_HOST'] = 'aws-rds.cm1lnnlrbky4.ap-northeast-1.rds.amazonaws.com'
 mysql.init_app(app)
-genres = { 'names': { 'first_name': 'Frank', 'last_name': 'Sinatra'}, 'score': 98}
+genres_data = { 'names': { 'first_name': 'Frank', 'last_name': 'Sinatra'}, 'score': 98}
 @app.route('/')
 def hello_world():
 	return 'Hello from EC2 + Ubuntu Flask + git! ver 3.0'
@@ -38,7 +38,7 @@ def count_me(input_str):
 @app.route('/genres')
 def genres():
 	#return jsonify({'genres': genres})
-	return jsonify(genres)
+	return jsonify({'genres': genres_data})
 
 @app.route("/auth/<msn>")
 def auth(msn):
