@@ -17,21 +17,24 @@ list = [
 	{'grade': 'A'}
 ]
 
-def hello_world4():
-	return 'Hello from EC2 + Ubuntu Flask + git! ver 4.0'
-
 @app.route('/')
 def hello_world():
 	return 'Hello from EC2 + Ubuntu Flask + git! ver 3.0'
+	
+@app.route('/guest')
+@app.route('/guest/<name>')
+def guest(name=None):
+	if name is None:
+		return hello_world()
+	else:
+		return 'Hello from EC2 + Ubuntu Flask + git! ver 1.0'
 
 @app.route('/hello')
 @app.route('/hello/<name>')
 def hello(name=None):
 	if name is None:
 		name = 'Guest'
-		return hello_world4()
-	else:
-		return render_template('hello.html', name=name)
+	return render_template('hello.html', name=name)
 	
 @app.route('/signup')
 def signup():
