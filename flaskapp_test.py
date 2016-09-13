@@ -102,7 +102,7 @@ def getUserAgent():
 	userAgentString = request.headers.get('User-Agent')
 	user_agent = request.user_agent
 	ip = request.remote_addr
-	return render_template('UserAgent.html', userAgentString=userAgentString, user_agent=user_agent, user_ip=ip, timestamp = datetime.now().replace(minute = 0))
+	return render_template('UserAgent.html', userAgentString=userAgentString, user_agent=user_agent, user_ip=ip, timestamp = datetime.now())
 
 if __name__ == '__main__':
   app.run()
