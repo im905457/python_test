@@ -44,7 +44,7 @@ def hello(name=None):
 @app.route('/signup')
 def signup():
 	#session.clear()
-	return render_template('signup.html')
+	return render_template('signup.html', session=session)
 
 @app.route('/reg', methods=['POST'])
 def reg():
@@ -59,15 +59,16 @@ def reg():
 	# validate the received values
 	if data is not None:
 		#return '登入成功!'
+		session.clear()
 		return redirect(url_for('.getUserAgent'))
 	elif _name and _email and _password:
 		#return '帳號不存在!'
 		session['error'] = '帳號不存在!'
-		return render_template('signup.html', session=session)
+		return redirect(url_for('.signup'))
 	else:
 		#return '缺少必要參數'
 		session['error'] = '缺少必要參數!'
-		return render_template('signup.html', session=session)
+		return redirect(url_for('.signup'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
