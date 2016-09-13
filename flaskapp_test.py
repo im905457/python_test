@@ -88,5 +88,12 @@ def auth(msn):
     else:
         return "USER NAME: %s" % data[3]
 
+@app.route('/getUserAgent')
+def getUserAgent():
+	userAgentString = request.headers.get('User-Agent')
+	user_agent = request.user_agent
+	ip = request.remote_addr
+	return render_template('UserAgent.html', userAgentString=userAgentString, user_agent=user_agent, user_ip=ip)
+
 if __name__ == '__main__':
   app.run()

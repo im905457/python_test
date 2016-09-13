@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">How To Get The Browser/User Agent Of The User In Flask</h3>
+      </div>
+      <hr/>
+      <div>
+        <strong>Your User-Agent string is:</strong> {{userAgentString}}<br /><br/>
+        We also have available the user agent object (request.user_agent), with the following properties and values:
+<ul>
+<li><strong>You IP address is:</strong> {{user_ip}}</li>
+<li><strong>user_agent.platform:</strong> {{user_agent.platform}}</li>
+<li><strong>user_agent.browser:</strong> {{user_agent.browser}}</li>
+<li><strong>user_agent.version:</strong> {{user_agent.version}}</li>
+<li><strong>user_agent.language:</strong> {{user_agent.language}}</li>
+<li><strong>user_agent.string:</strong> {{user_agent.string}}</li>
+</ul>        
+    <div class="header">
+        <h3 class="text-muted">Code to retrieve the User Agent Details</h3>
+      </div>
+      <hr/>    
+<pre>
+@app.route('/')
+def getUserAgent():
+  userAgentString = request.headers.get('User-Agent')
+  user_agent = request.user_agent
+  return render_template('index.html', userAgentString=userAgentString, user_agent=user_agent)
+</pre>
+      </div>
+    </div>
+  </body>
+</html>
