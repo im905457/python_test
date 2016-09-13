@@ -1,4 +1,5 @@
-from flask import Flask, request, jsonify, render_template, url_for
+from flask import Flask, request, jsonify, render_template, redirect, url_for
+from datetime import datetime
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
@@ -93,7 +94,7 @@ def getUserAgent():
 	userAgentString = request.headers.get('User-Agent')
 	user_agent = request.user_agent
 	ip = request.remote_addr
-	return render_template('UserAgent.html', userAgentString=userAgentString, user_agent=user_agent, user_ip=ip)
+	return render_template('UserAgent.html', userAgentString=userAgentString, user_agent=user_agent, user_ip=ip, timestamp = datetime.now().replace(minute = 0))
 
 if __name__ == '__main__':
   app.run()
