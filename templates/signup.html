@@ -32,10 +32,12 @@
 			<input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
 			<label for="inputPassword" class="sr-only">Password</label>
 			<input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+			{% if session['error'] %}
 			<div class="alert alert-danger" role="alert" id="danger-alert">
 				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-				<span class="sr-only">Error:</span><div id="error_msg"></div>
+				<span class="sr-only">Error:</span><div id="error_msg">{{session['error']}}</div>
 			</div>
+			{% endif %}
 			<button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 		</form>
       </div>
@@ -48,9 +50,9 @@
  
     </div>
 	<script>
-	/*$(function(){
+	$(function(){
 		$("#danger-alert").hide();
-		$('#btnSignUp').click(function() {
+		/*$('#btnSignUp').click(function() {
 			$.ajax({
 				url: '/reg',
 				data: $('form').serialize(),
@@ -63,8 +65,8 @@
 					console.log(error);
 				}
 			});
-		});
-	});*/
+		});*/
+	});
 	</script>
   </body>
 </html>

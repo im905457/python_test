@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import Flask, session, request, jsonify, render_template, redirect, url_for
 from datetime import datetime
 from flaskext.mysql import MySQL
 
@@ -17,6 +17,7 @@ list = [
 	{'score': 98},
 	{'grade': 'A'}
 ]
+app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
 
 def dir_func():
 	return 'guestname is empty, you are directing to dir_func...'
@@ -42,6 +43,7 @@ def hello(name=None):
 	
 @app.route('/signup')
 def signup():
+	#session.clear()
 	return render_template('signup.html')
 
 @app.route('/reg', methods=['POST'])
@@ -56,11 +58,16 @@ def reg():
 	data = cursor.fetchone()
 	# validate the received values
 	if data is not None:
-		return '登入成功!'
+		#return '登入成功!'
+		return redirect(url_for('.getUserAgent'))
 	elif _name and _email and _password:
-		return '帳號不存在!'
+		#return '帳號不存在!'
+		session['error'] = '帳號不存在!'
+		return render_template('signup.html', session=session)
 	else:
-		return '缺少必要參數'
+		#return '缺少必要參數'
+		session['error'] = '缺少必要參數!'
+		return render_template('signup.html', session=session)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
