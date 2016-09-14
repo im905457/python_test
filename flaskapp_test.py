@@ -62,8 +62,8 @@ def reg():
 	if data is not None:
 		#return '登入成功!'
 		timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		#query = ("""INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)""", (data[0], timestamp))
-		cursor.execute("INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES ('0000000001', '2016-09-14 10:55:00')")
+		query = ("""INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)""", (data[0], timestamp))
+		cursor.execute(query)
 		conn.commit()
 		session.clear()
 		return '登入成功!'
