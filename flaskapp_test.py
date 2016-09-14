@@ -60,8 +60,8 @@ def reg():
 	if data is not None:
 		#return '登入成功!'
 		timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		query = "INSERT INTO MEMBER_LOGIN ( MEMBER_SN, LOG_TIME ) VALUES ( '" + data[0] + "', '" + timestamp + "' )"
-		cursor.execute(query)
+		#query = "INSERT INTO MEMBER_LOGIN ( MEMBER_SN, LOG_TIME ) VALUES ( '" + data[0] + "', '" + timestamp + "' )"
+		cursor.execute('''INSERT INTO login (MEMBER_SN, LOG_TIME) VALUES (%s, %s)''', (data[0], timestamp))
 		mysql.connect().commit()
 		session.clear()
 		return redirect(url_for('.getUserAgent'))
