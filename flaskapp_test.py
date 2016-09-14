@@ -61,8 +61,7 @@ def reg():
 		#return '登入成功!'
 		timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 		#query = "INSERT INTO MEMBER_LOGIN ( MEMBER_SN, LOG_TIME ) VALUES ( '" + data[0] + "', '" + timestamp + "' )"
-		mm = '0000000001'
-		cursor.execute('''INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)''', (mm, timestamp))
+		cursor.execute("INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)", (data[0], timestamp))
 		mysql.connect().commit()
 		return '登入成功!'
 		#session.clear()
