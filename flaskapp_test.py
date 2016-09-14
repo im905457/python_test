@@ -62,7 +62,7 @@ def reg():
 		timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 		query = "INSERT INTO MEMBER_LOGIN ( MEMBER_SN, LOG_TIME ) VALUES ( '" + data[0] + "', '" + timestamp + "' )"
 		cursor.execute(query)
-		connection.commit()
+		mysql.connect().commit()
 		session.clear()
 		return redirect(url_for('.getUserAgent'))
 	elif _name and _email and _password:
@@ -106,7 +106,7 @@ def getUserAgent():
 	userAgentString = request.headers.get('User-Agent')
 	user_agent = request.user_agent
 	ip = request.remote_addr
-	return render_template('UserAgent.html', userAgentString=userAgentString, user_agent=user_agent, user_ip=ip, timestamp = datetime.now())
+	return render_template('UserAgent.html', userAgentString=userAgentString, user_agent=user_agent, user_ip=ip, timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 if __name__ == '__main__':
   app.run()
