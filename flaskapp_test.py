@@ -62,12 +62,11 @@ def reg():
 	if data is not None:
 		#return '登入成功!'
 		timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		query = ("""INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)""", (data[0], timestamp))
+		query = """INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)""", (data[0], timestamp)
 		cursor.execute(query)
 		conn.commit()
 		session.clear()
-		return '登入成功!'
-		#return redirect(url_for('.getUserAgent'))
+		return redirect(url_for('.getUserAgent'))
 	elif _name and _email and _password:
 		#return '帳號不存在!'
 		session['error'] = '帳號不存在!'
