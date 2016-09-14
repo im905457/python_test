@@ -11,7 +11,8 @@ def hello_world():
 	s = text("SELECT * from MEMBER_DATA")
 	result = conn.execute(s)
 	row = result.fetchone()
-	print("name:", row['MEMBER_SN'], "; fullname:", row['MEMBER_ID'])
+	#print("name:", row['MEMBER_SN'], "; fullname:", row['MEMBER_ID'])
+	return row['MEMBER_SN']
 
 	result.close()
 
