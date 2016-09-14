@@ -53,7 +53,9 @@ def reg():
 	_email = request.form['inputEmail']
 	_password = request.form['inputPassword']
 	
-	cursor = mysql.connect().cursor()
+	conn = mysql.connect()
+	cursor =conn.cursor()
+	#cursor = mysql.connect().cursor()
 	cursor.execute("SELECT * from MEMBER_DATA where MEMBER_ID = '" + _name + "' ")
 	data = cursor.fetchone()
 	# validate the received values
@@ -62,7 +64,7 @@ def reg():
 		timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 		#query = ("""INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)""", (data[0], timestamp))
 		cursor.execute("INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES ('0000000001', '2016-09-14 10:55:00')")
-		mysql.connect().commit()
+		conn.commit()
 		session.clear()
 		return '登入成功!'
 		#return redirect(url_for('.getUserAgent'))
