@@ -63,8 +63,9 @@ def reg():
 		#query = "INSERT INTO MEMBER_LOGIN ( MEMBER_SN, LOG_TIME ) VALUES ( '" + data[0] + "', '" + timestamp + "' )"
 		cursor.execute('''INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)''', (data[0], timestamp))
 		mysql.connect().commit()
-		session.clear()
-		return redirect(url_for('.getUserAgent'))
+		return '登入成功!'
+		#session.clear()
+		#return redirect(url_for('.getUserAgent'))
 	elif _name and _email and _password:
 		#return '帳號不存在!'
 		session['error'] = '帳號不存在!'
