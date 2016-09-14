@@ -1,7 +1,6 @@
 from flask import Flask
 from sqlalchemy import create_engine, Table, Column, Integer, String, MetaData, ForeignKey
 from sqlalchemy.sql import select
-from models import MEMBER_DATA
 
 app = Flask(__name__)
 
