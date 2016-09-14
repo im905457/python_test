@@ -61,11 +61,10 @@ def reg():
 		#return '登入成功!'
 		timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 		#query = ("""INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)""", (data[0], timestamp))
-		query = "INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES ('0000000001', '2016-09-14 10:55:00')"
-		cursor.execute(query)
+		cursor.execute("INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES ('0000000001', '2016-09-14 10:55:00')")
 		mysql.connect().commit()
+		session.clear()
 		return '登入成功!'
-		#session.clear()
 		#return redirect(url_for('.getUserAgent'))
 	elif _name and _email and _password:
 		#return '帳號不存在!'
