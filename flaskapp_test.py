@@ -60,7 +60,7 @@ def reg():
 	if data is not None:
 		#return '登入成功!'
 		timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		query = ("""INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)""" , (data[0], timestamp))
+		query = ("""INSERT INTO MEMBER_LOGIN (MEMBER_SN, LOG_TIME) VALUES (%s, %s)""", (data[0], timestamp))
 		cursor.execute(query)
 		mysql.connect().commit()
 		return '登入成功!'
@@ -110,4 +110,4 @@ def getUserAgent():
 	return render_template('UserAgent.html', userAgentString=userAgentString, user_agent=user_agent, user_ip=ip, timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 if __name__ == '__main__':
-  app.run()
+  app.run(debug=True)
