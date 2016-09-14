@@ -8,7 +8,7 @@ def hello_world():
 	s = select([MEMBER_DATA])
 	result = conn.execute(s)
 	row = result.fetchone()
-		print("name:", row['MEMBER_SN'], "; fullname:", row['MEMBER_ID'])
+	print("name:", row['MEMBER_SN'], "; fullname:", row['MEMBER_ID'])
 
 	result.close()
 
