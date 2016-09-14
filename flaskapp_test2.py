@@ -10,3 +10,6 @@ result = conn.execute(s)
 for row in result:
 	print(row)
 result.close()
+
+if __name__ == '__main__':
+  app.run(debug=True)
