@@ -54,7 +54,7 @@ def reg():
 	_password = request.form['inputPassword']
 	
 	conn = mysql.connect()
-	cursor =conn.cursor()
+	cursor = conn.cursor()
 	#cursor = mysql.connect().cursor()
 	cursor.execute("SELECT * from MEMBER_DATA where MEMBER_ID = '" + _name + "' ")
 	data = cursor.fetchone()
